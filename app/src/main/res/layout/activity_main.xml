@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="horizontal"
+    android:orientation="vertical"
     tools:context="ui.MainActivity"
     >
 
@@ -17,7 +17,7 @@
         android:layout_height="wrap_content"
         android:text="@string/hello_message"
         android:id="@+id/textview"
-        ></TextView>
+        />
 
 
     <Button
@@ -26,16 +26,53 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="50dp"
         android:text="@string/button_message"
-        ></Button>
+        />
 
+    <Button
+        android:id="@+id/my_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Click me!" />
 
+    <CheckBox
+        android:id="@+id/checkbox_coffee"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/coffee_question" />
+
+    <Switch
+        android:text="@string/coffee_question"
+        android:id="@+id/switch_coffee"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:minHeight="48dp"/>
+
+    <RadioButton
+        android:text="@string/coffee_question"
+        android:id="@+id/radio_coffee"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+         />
     <EditText
         android:id="@+id/myedittext"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/editmessage"
         android:hint="@string/hinttext"
+        android:minHeight="48dp"
+        />
 
-        ></EditText>
+    <ImageView
+        android:id="@+id/picture"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/logo_algonquin"/>
+
+    <ImageButton
+        android:id="@+id/myimagebutton"
+        android:src="@drawable/logo_algonquin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        />
 
 </LinearLayout>

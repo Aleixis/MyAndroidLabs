@@ -3,4 +3,7 @@
     <string name="app_name">Wu\'s Android labs</string>
     <string name="hello_message">你好，世界！</string>
     <string name="button_message">我是一个按钮</string>
+    <string name="editmessage">可修改信息</string>
+    <string name="hinttext">提示文本</string>
+    <string name="coffee_question">咖啡问题</string>
 </resources>
