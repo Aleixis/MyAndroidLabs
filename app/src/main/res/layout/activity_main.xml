@@ -1,78 +1,50 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context="ui.MainActivity"
-    >
+    tools:context=".MainActivity">
 
-
-
-
-    <TextView
-        android:layout_width="wrap_content"
+    <EditText
+        android:id="@+id/theEditText"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/hello_message"
-        android:id="@+id/textview"
-        />
-
+        android:hint="Type your word here"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/button"
-        android:layout_width="wrap_content"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="50dp"
-        android:text="@string/button_message"
-        />
+        android:layout_marginTop="22dp"
+        android:text="SEND"
+        app:layout_constraintEnd_toStartOf="@+id/button2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/theEditText" />
 
     <Button
-        android:id="@+id/my_button"
-        android:layout_width="wrap_content"
+        android:id="@+id/button2"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:text="Click me!" />
+        android:layout_marginTop="22dp"
+        android:text="RECEIVE"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/theEditText" />
 
-    <CheckBox
-        android:id="@+id/checkbox_coffee"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/coffee_question" />
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/theRecycleView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="1dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="1dp"
+        android:layout_marginBottom="1dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button" />
 
-    <Switch
-        android:text="@string/coffee_question"
-        android:id="@+id/switch_coffee"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:minHeight="48dp"/>
-
-    <RadioButton
-        android:text="@string/coffee_question"
-        android:id="@+id/radio_coffee"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-         />
-    <EditText
-        android:id="@+id/myedittext"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/editmessage"
-        android:hint="@string/hinttext"
-        android:minHeight="48dp"
-        />
-
-    <ImageView
-        android:id="@+id/picture"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/logo_algonquin"/>
-
-    <ImageButton
-        android:id="@+id/myimagebutton"
-        android:src="@drawable/logo_algonquin"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        />
-
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
