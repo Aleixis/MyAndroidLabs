@@ -1,6 +1,7 @@
 package com.example.wusandroidlabs;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModelProvider;
@@ -19,16 +20,22 @@ import com.example.wusandroidlabs.data.MainActivityViewModel;
 import com.example.wusandroidlabs.databinding.ActivityMainBinding;
 import com.example.wusandroidlabs.databinding.ReceiveMessageBinding;
 import com.example.wusandroidlabs.databinding.SentMessageBinding;
+import com.google.android.material.snackbar.Snackbar;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
+import java.util.concurrent.Executor;
+import java.util.concurrent.Executors;
 
 
 public class MainActivity extends AppCompatActivity {
 
 
-    protected MutableLiveData<ArrayList<ChatMessage>> theWords;
+    //MutableLiveData<ArrayList<ChatMessage>> theWords;
+    protected MutableLiveData<ArrayList<ChatMessage>> theWords ;
+
 
     MainActivityViewModel MainModel ;
     /** This holds the "Click me" button */
@@ -42,6 +49,11 @@ public class MainActivity extends AppCompatActivity {
 
     RecyclerView.Adapter myAdapter;
     //equivalent to        static void main(String args[])
+
+    MessageDatabase db ;
+    ChatMessageDAO mDAO ;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState); //calling onCreate from parent class
@@ -52,6 +64,35 @@ public class MainActivity extends AppCompatActivity {
         ActivityMainBinding binding = ActivityMainBinding.inflate(getLayoutInflater());
         //loads an XML file on the page
         setContentView(  binding.getRoot()  );
+
+
+
+
+        if (theWords != null && theWords.getValue() == null) {
+
+            Executor thread = Executors.newSingleThreadExecutor();
+            thread.execute(() -> {
+                List<ChatMessage> allMessages = mDAO.getAllMessages();
+                theWords.getValue().addAll(allMessages);
+            });
+        }
+            //if (theWords != null && theWords.getValue() == null) {
+        //
+        //            theWords.setValue(new ArrayList<>());Executor thread = Executors.newSingleThreadExecutor();
+           // thread.execute(() ->
+          //  {
+                //theWords.getValue().addAll(mDAO.getAllMessages());
+
+              //  runOnUiThread( () ->  binding.theRecycleView.setAdapter( myAdapter ));
+            //});
+      // }
+
+
+
+
+
+
+
 
         MainModel = new ViewModelProvider(this).get(MainActivityViewModel.class);
 //all new messages:
@@ -134,23 +175,23 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-        @Override
+            @Override
             public void onBindViewHolder(@NonNull MyRowHolder holder, int position) {
 
-            ArrayList<ChatMessage> chatMessages = theWords.getValue();
+                ArrayList<ChatMessage> chatMessages = theWords.getValue();
 
-            // Check if chatMessages is null or position is out of bounds
-            if (chatMessages == null || position >= chatMessages.size()) {
-                return;
-            }
+                // Check if chatMessages is null or position is out of bounds
+                if (chatMessages == null || position >= chatMessages.size()) {
+                    return;
+                }
 
-            // Retrieve the ChatMessage object at the specified position
-            ChatMessage atThisRow = chatMessages.get(position);
+                // Retrieve the ChatMessage object at the specified position
+                ChatMessage atThisRow = chatMessages.get(position);
                 holder.theTime.setText(atThisRow.timeSent);
                 holder.theWord.setText(  atThisRow.message );//puts the string in position at theWord TextView
 
 
-        }
+            }
 
 
 
@@ -183,6 +224,29 @@ public class MainActivity extends AppCompatActivity {
         public MyRowHolder(@NonNull View itemView) {
             super(itemView);
             //THis holds the message Text:
+
+
+            ArrayList<ChatMessage> message = theWords.getValue();
+            itemView.setOnClickListener(clk->{
+                AlertDialog.Builder builder = new AlertDialog.Builder( MainActivity.this );
+
+                builder.setMessage("Do you want delete the message"+theWord.getText())
+                        .setTitle("Question:")
+                        .setNegativeButton("No",(dialog, cl)->{})
+                        .setPositiveButton("yes",(dialog, cl)->{
+
+                            int position = getAbsoluteAdapterPosition();
+                            ChatMessage removedMessage=message.get(position);
+                            message.remove(position);
+                            myAdapter.notifyItemRemoved(position);
+
+                            Snackbar.make(theWord,"You deleted message #"+position,Snackbar.LENGTH_LONG).setAction("Undo",ck ->{
+                               message.add(position,removedMessage);
+                                myAdapter.notifyItemInserted(position);
+                            }).show();
+
+                        }).create().show();
+            });
             theWord = itemView.findViewById(R.id.message);
 
             //This holds the time text
@@ -193,4 +257,3 @@ public class MainActivity extends AppCompatActivity {
 
 
 };
-

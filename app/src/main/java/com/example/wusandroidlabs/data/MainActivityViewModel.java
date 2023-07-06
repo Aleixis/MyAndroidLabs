@@ -9,5 +9,6 @@ import java.util.ArrayList;
 
 public class MainActivityViewModel extends ViewModel {
   // public ArrayList<ChatMessage> messages = new ArrayList<>();
-    public MutableLiveData<ArrayList<ChatMessage>> messages = new MutableLiveData< >();
+  public MutableLiveData<ArrayList<ChatMessage>> messages = new MutableLiveData< >();
+  //public MutableLiveData<ArrayList<String>> messages = new MutableLiveData< >();
 }
