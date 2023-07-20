@@ -19,15 +19,19 @@ import androidx.room.PrimaryKey;
 
         @PrimaryKey(autoGenerate=true)
         @ColumnInfo(name="id")
-        public int id;
+        public long id;
 
         public ChatMessage(String s,
                            String time,
-                           boolean type){
+                           boolean type ){
             message = s;
             timeSent = time;
             isSend = type;
+
+
+
         }
 
-
+        public ChatMessage()//for database queries
+        {}
     }

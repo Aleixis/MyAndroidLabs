@@ -38,4 +38,5 @@
         app:layout_constraintStart_toEndOf="@+id/message"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/cat1" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
