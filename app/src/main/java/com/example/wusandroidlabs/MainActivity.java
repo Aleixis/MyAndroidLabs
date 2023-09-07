@@ -126,7 +126,7 @@ public class MainActivity extends AppCompatActivity {
             String input = theEditText.getText().toString();
 
             int type = 0;
-            SimpleDateFormat sdf = new SimpleDateFormat("EEEE, dd-MMM-yyyy hh-mm-ss a");
+            SimpleDateFormat sdf = new SimpleDateFormat(" hh:mm a");
             String currentDateandTime = sdf.format(new Date());
 
             List<ChatMessage> currentMessages = theWords.getValue();
@@ -151,7 +151,7 @@ public class MainActivity extends AppCompatActivity {
             String input = theEditText.getText().toString();
 
 
-            SimpleDateFormat sdf = new SimpleDateFormat("EEEE, dd-MMM-yyyy hh-mm-ss a");
+            SimpleDateFormat sdf = new SimpleDateFormat("hh:mm a");
             String currentDateandTime = sdf.format(new Date());
             List<ChatMessage> currentMessages = theWords.getValue();
             if (currentMessages == null) {

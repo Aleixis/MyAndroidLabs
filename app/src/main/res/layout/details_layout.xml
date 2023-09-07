@@ -23,6 +23,8 @@
         android:layout_marginStart="44dp"
         android:layout_marginTop="32dp"
         android:text="MessageGoesHere"
+        android:background="#4CAF50"
+        android:textSize="30sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

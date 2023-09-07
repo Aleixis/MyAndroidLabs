@@ -28,16 +28,17 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/theRecycleView" />
 
-            <Button
-                android:id="@+id/button"
-                android:layout_width="200dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="22dp"
-                android:text="SEND"
-                app:layout_constraintEnd_toStartOf="@+id/button2"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/theEditText" />
+    <Button
+        android:id="@+id/button"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="22dp"
+        android:background="@color/my_secondary"
+        android:text="SEND"
+        app:layout_constraintEnd_toStartOf="@+id/button2"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/theEditText" />
 
             <Button
                 android:id="@+id/button2"
@@ -45,6 +46,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="22dp"
                 android:text="RECEIVE"
+                android:background="@color/my_secondary"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toStartOf="parent"
@@ -67,7 +69,7 @@
         android:id="@+id/toolbar"
         android:layout_width="409dp"
         android:layout_height="65dp"
-        android:background="?attr/colorPrimary"
+        android:background="@color/my_secondary"
         android:minHeight="?attr/actionBarSize"
         android:theme="?attr/actionBarTheme"
         app:layout_constraintTop_toTopOf="parent"
